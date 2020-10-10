@@ -16,7 +16,7 @@ menu "Example Configuration"
 
     config AWS_EXAMPLE_CLIENT_ID
         string "AWS IoT Client ID"
-        default "myesp32"
+        default "teste_esp32"
         help
             AWS IoT Client ID for the example. Should be unique for every device.
 

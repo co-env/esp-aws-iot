@@ -36,6 +36,8 @@
 #include "esp_system.h"
 #include "esp_wifi.h"
 #include "esp_event_loop.h"
+
+#define LOG_LOCAL_LEVEL ESP_LOG_VERBOSE  //* Mudar o LOG level
 #include "esp_log.h"
 #include "esp_vfs_fat.h"
 #include "driver/sdmmc_host.h"
@@ -56,7 +58,7 @@ static const char *TAG = "subpub";
    If you'd rather not, just change the below entries to strings with
    the config you want - ie #define EXAMPLE_WIFI_SSID "mywifissid"
 */
-#define EXAMPLE_WIFI_SSID CONFIG_WIFI_SSID
+#define EXAMPLE_WIFI_SSID CONFIG_WIFI_SSID  //! Editei isso aqui direto com a senha do meu wi-fi, mas dá pra configurar no "make menuconfig"
 #define EXAMPLE_WIFI_PASS CONFIG_WIFI_PASSWORD
 
 /* FreeRTOS event group to signal when we are connected & ready to make a request */
@@ -102,6 +104,7 @@ static const char * ROOT_CA_PATH = CONFIG_EXAMPLE_ROOT_CA_PATH;
  * @brief Default MQTT HOST URL is pulled from the aws_iot_config.h
  */
 char HostAddress[255] = AWS_IOT_MQTT_HOST;
+// char HostAddress[255] = "a251a30rsajbl5.iot.sa-east-1.amazonaws.com";  //! HARDCODED ENDPOINT
 
 /**
  * @brief Default MQTT port is pulled from the aws_iot_config.h
@@ -326,6 +329,8 @@ void app_main()
         err = nvs_flash_init();
     }
     ESP_ERROR_CHECK( err );
+
+    esp_log_level_set("*", ESP_LOG_VERBOSE);
 
     initialise_wifi();
     xTaskCreatePinnedToCore(&aws_iot_task, "aws_iot_task", 9216, NULL, 5, NULL, 1);

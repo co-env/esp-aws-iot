@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define LOG_LOCAL_LEVEL ESP_LOG_DEBUG   //! Mudei o LOG LEVEL daqui pra DEBUG pra ver mais msgs das funcoes do aws-sdk
 #include "esp_log.h"
 
 /* This is a stub replacement for the aws_iot_log.h header in the AWS IoT SDK,

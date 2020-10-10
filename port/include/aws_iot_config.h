@@ -28,13 +28,14 @@
 
 // These values are defined in the menuconfig of the AWS IoT component.
 // However, you can override these constants from your own code.
-#define AWS_IOT_MQTT_HOST              CONFIG_AWS_IOT_MQTT_HOST ///< Customer specific MQTT HOST. The same will be used for Thing Shadow
-#define AWS_IOT_MQTT_PORT              CONFIG_AWS_IOT_MQTT_PORT ///< default port for MQTT/S
+// #define AWS_IOT_MQTT_HOST              CONFIG_AWS_IOT_MQTT_HOST ///< Customer specific MQTT HOST. The same will be used for Thing Shadow
+#define AWS_IOT_MQTT_HOST              "a251a30rsajbl5.iot.sa-east-1.amazonaws.com" ///< Customer specific MQTT HOST. The same will be used for Thing Shadow
+#define AWS_IOT_MQTT_PORT              443 ///< default port for MQTT/S
 
 // These values are defaults and are used for ShadowConnectParametersDefault.
 // You should override them from your own code.
-#define AWS_IOT_MQTT_CLIENT_ID         "ESP32" ///< MQTT client ID should be unique for every device
-#define AWS_IOT_MY_THING_NAME          "ESP32" ///< Thing Name of the Shadow this device is associated with
+#define AWS_IOT_MQTT_CLIENT_ID         "testess" ///< MQTT client ID should be unique for every device
+#define AWS_IOT_MY_THING_NAME          "teste_esp32" ///< Thing Name of the Shadow this device is associated with  => Nome da "Coisa" configurada no AWS IoT
 
 // MQTT PubSub
 #define AWS_IOT_MQTT_TX_BUF_LEN CONFIG_AWS_IOT_MQTT_TX_BUF_LEN ///< Any time a message is sent out through the MQTT layer. The message is copied into this buffer anytime a publish is done. This will also be used in the case of Thing Shadow
